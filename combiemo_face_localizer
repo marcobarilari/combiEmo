@@ -70,7 +70,7 @@ msInterFrameInterval = interFrameInterval*1000; %in ms
  
 %%% more useful variables %%%
 % timings in my stimuli presentation sequence %
-ISI = 0.05 - interFrameInterval/5;
+ISI = 0.1 - interFrameInterval/5;
 fixationDur = 0.5 - interFrameInterval/5;
 responseDur = 4 - interFrameInterval/5;
 practiceResponseDur = 5 - interFrameInterval/5;
