@@ -50,6 +50,10 @@ nReps = input('Number of repetitions:');
 blockModalityVector = input('Input in square brackets - modality order:');
 
 
+% add supporting functions to the path
+addpath(genpath('./supporting_functions'));
+
+
 %% INITIALIZE SCREEN AND START THE STIMULI PRESENTATION %%
 
 % basic setup checking

@@ -21,6 +21,9 @@ if isempty(nReps)
     nReps=12;
 end
 
+% add supporting functions to the path
+addpath(genpath('./supporting_functions'));
+
 %%% SET UP OUTPUT FILES %%%
 dataFileName = [cd '/data/subj' num2str(subjNumber) '_' expName '.txt'];
 % format for the output od the data %
