@@ -44,11 +44,19 @@ stimYsize = 480;
 subjNumber = input('Subject number:');
 subjAge = input('Age:');
 nReps = input('Number of repetitions:');
+% if no value is supplied, do 12 reps
+if isempty(nReps)
+    nReps=12;
+end
+
 % this defines the modality block order within a subject
 % modality orded will be fixed within participant, and randomized/balanced across %
 % 1 = visual, 2 = auditory, 3 = bimodal
 blockModalityVector = input('Input in square brackets - modality order:');
-
+% if no value is supplied, choose order randomly
+if isempty(blockModalityVector)
+    blockModalityVector=randperm(3);
+end
 
 % add supporting functions to the path
 addpath(genpath('./supporting_functions'));
