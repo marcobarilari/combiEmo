@@ -162,7 +162,7 @@ myFacesStructArray = {Ne27Struct,Di27Struct,Fe27Struct,Ha27Struct,Sa27Struct,Ne3
 
 
 % Preallocate and build one structure per object video too
-objectFramePath = '/visual_stim/'; % where to find the object images
+objectFramePath = '/visual_stim/object_frames/'; % where to find the object images
 
 candlesmallStruct = struct;  candlesmallStruct = buildFramesStruct(mainWindow, candlesmallStruct, nFrames, frameDuration, allFrameNamesObjects(:,1), objectFramePath);
 carrouselStruct = struct;    carrouselStruct = buildFramesStruct(mainWindow, carrouselStruct, nFrames, frameDuration, allFrameNamesObjects(:,2), objectFramePath);
