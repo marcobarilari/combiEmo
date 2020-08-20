@@ -4,7 +4,13 @@
 *octave-workspace
 
 # exclude content of logfiles folders
+*/data/*
 */logfiles/*
 */*/*/logfiles/*
 *.tsv
 *.mat
+*.txt
+
+# exclude content of stimuli folders
+*/auditory_stim/*.wav
+*/visual_stim/*.png
