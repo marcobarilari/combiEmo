@@ -44,10 +44,22 @@ stimYsize = 480;
 subjNumber = input('Subject number:');
 subjAge = input('Age:');
 nReps = input('Number of repetitions:');
+% if no value is supplied, do 12 reps
+if isempty(nReps)
+    nReps=12;
+end
+
 % this defines the modality block order within a subject
 % modality orded will be fixed within participant, and randomized/balanced across %
 % 1 = visual, 2 = auditory, 3 = bimodal
 blockModalityVector = input('Input in square brackets - modality order:');
+% if no value is supplied, choose order randomly
+if isempty(blockModalityVector)
+    blockModalityVector=randperm(3);
+end
+
+% add supporting functions to the path
+addpath(genpath('./supporting_functions'));
 
 
 %% INITIALIZE SCREEN AND START THE STIMULI PRESENTATION %%
@@ -211,8 +223,8 @@ for t = 1:length(stimName)
         myExpTrials(t).actor = stimActor(t);
 end
 
-% % Load stimuli structure if preexisting
-% load(['expTrialsStructure.mat']);
+% black image for audio-only presentation
+blackImage = Screen('MakeTexture', mainWindow ,imread([cd '/visual_stim/black_img.pngblack_img.png']));
 
 %% Insert the task stimuli as extra trials
 % vector with block numbers
@@ -505,18 +517,20 @@ for rep = 1:nReps
             PsychPortAudio('Start', pahandle, 1, 0, 1);
         
 
-            % Stay in a little loop for the file duration:        
-            t1 = 0;
-            while t1 < audioFileDuration
-                [keyIsDown, time, key] = KbCheck;
+            % Stay in a little loop for the file duration:     
+            % use frames presentation loop to get the same duration as in the bimodal condition%
+            for f = 1:nFrames   
 
-                %     if keyIsDown
-                %         break
-                %     end
+            Screen('DrawTexture', mainWindow, blackImage, [], [], 0);
+            [~, ~, lastEventTime] = Screen('Flip', mainWindow, lastEventTime+frameDuration);
 
-                t2 = GetSecs;
-                t1 = t2 - stimStart;            
-            end
+               % time stamp to measure stimulus duration on screen
+%                if f == 1
+%                   stimStart = GetSecs;
+%                end
+
+            end   
+
         
             % Stop playback:
             PsychPortAudio('Stop', pahandle);

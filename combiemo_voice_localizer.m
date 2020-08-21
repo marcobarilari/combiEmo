@@ -21,6 +21,8 @@ if isempty(nReps)
     nReps=12;
 end
 
+
+
 %%% SET UP OUTPUT FILES %%%
 dataFileName = [cd '/data/subj' num2str(subjNumber) '_' expName '.txt'];
 % format for the output od the data %
@@ -165,6 +167,7 @@ ListenChar(-1);
 for rep=1:nReps
     
     Screen('FillRect', mainWindow, bgColor);
+    DrawFormattedText(mainWindow, '+', 'center', 'center', textColor);
     [~, ~, lastEventTime] = Screen('Flip', mainWindow);
     
     % acquire some base line
@@ -360,7 +363,7 @@ for rep=1:nReps
         for trial=1:nStim+w
             
             % fixation cross
-            DrawFormattedText(mainWindow, '+', textColor);
+            DrawFormattedText(mainWindow, '+', 'center', 'center', textColor);
             Screen('Flip', mainWindow);
 
             % start queuing for triggers and subject's keypresses (flush previous queue) %
