@@ -31,6 +31,11 @@ formatString = '%d, %d, %s, %s, %1.3f, %1.3f, %1.3f, \n';
 keypressFormatString = '%d, %s, %1.3f, \n';
 baselineFormatString = '%d, %1.3f \n';
 
+% mkdir `data` in case it does not exist
+if exist('data', 'dir') ~= 7 %ans 7 means that a directory exist
+    mkdir('data');
+end
+
 % open files for reading AND writing
 % permission 'a' appends data without deleting potential existing content
 if exist(dataFileName, 'file') == 0
